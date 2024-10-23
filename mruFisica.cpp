@@ -8,10 +8,10 @@ struct Datos{
 };
 
 void deltas(Datos a[], int i, double &t, double &d){
-	
 	t = a[i].tf - a[i].ti;
 	d = a[i].df - a[i].di;
 }
+
 int main(){
 	
 	int totalAlmacenimiento=100;
@@ -21,14 +21,15 @@ int main(){
 	double t=0, d=0, v=0;
 	do{
 	
-	cout << "1. Calculadora" << endl << endl
+	cout << "**** CALCULADOR PARA MRUV ****" << endl << endl
 		 << "Indique que quiere hallar: " << endl << endl
 		 << "A) Aceleracion" << endl
 		 << "B) Tiempo" << endl
 		 << "C) Distancia" << endl
 		 << "D) Velocidad Inicial" << endl
 		 << "E) Velocidad Final" << endl
-		 << "F) Salir "<< endl << endl;
+		 << "F) Salir "<< endl << endl
+		 << "= ";
 	cin >> hallar;
 	system("cls");
 	
@@ -62,6 +63,7 @@ int main(){
 			} else {
 				datos[i].r=(datos[i].vf-datos[i].vi)/t;
 			}
+			cout << endl;
 			cout << "La aceleracion es: " << datos[i].r;
 			break;
 		case 'B': //no se sabe el tiempo
@@ -84,6 +86,7 @@ int main(){
 			} else{
 				datos[i].r=(datos[i].vf-datos[i].vi)/datos[i].a;
 			}
+			cout << endl;
 			cout << "El tiempo es: " << datos[i].r;
 			break; 
 		case 'C'://no se sabe la distancia
@@ -108,12 +111,13 @@ int main(){
 			if(datos[i].vf==0){
 				datos[i].r=datos[i].vi*t+(datos[i].a*t*t)/2;
 			}
+			cout << endl;
 			cout << "La distancia es: " << datos[i].r;
 			break;
 		case 'D': //no se sabe la velocidad inicial
 			cout << "Indique los datos disponibles: "<< endl << endl;
 			cout << "Aceleracion: ";
-			cin >> datos[i].a;
+			cin >> datos[i].a; 
 			cout << "Tiempo Inicial: ";
 			cin >> datos[i].ti;
 			cout << "Tiempo Final: ";
@@ -136,6 +140,7 @@ int main(){
 			if(datos[i].vf==0){
 				datos[i].r=(2*d-datos[i].a*t*t)/2*t;
 			}
+			cout << endl;
 			cout << "La velocidad inicial es: " << datos[i].r;
 			break;
 		case 'E': //no se sabe la velocidad final
@@ -153,7 +158,7 @@ int main(){
 			cout << "Velocidad Inicial: ";
 			cin >> datos[i].vf;
 			
-			deltas(datos, i, t, d);
+			deltas(datos, i, t, d );
 			
 			if(t==0){
 				datos[i].r=sqrt(datos[i].vi*datos[i].vi+2*datos[i].a*d);
@@ -161,6 +166,7 @@ int main(){
 			if(d==0){
 				datos[i].r=datos[i].vi+datos[i].a*t;
 			}
+			cout << endl;
 			cout << "La velocidad final es: " << datos[i].r;
 			break;
 		case 'F':
